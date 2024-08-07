@@ -1,16 +1,20 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import AddTask from './components/AddTask';
 import Header from './components/Header';
 import TaskList from './components/TaskList';
 import './App.css';
 
 function App() {
-  const [taskList, setTaskList] = useState([
+  const [taskList, setTaskList] = useState(JSON.parse(localStorage.getItem("taskList")) || [
     { id: 1001, name: "Task 1", time: "7:57:32 PM 8/5/2024" },
     { id: 1002, name: "Task 2", time: "7:57:32 PM 8/5/2024" },
     { id: 1003, name: "Task 3", time: "7:57:32 PM 8/5/2024" }
   ]);
   const [task, setTask] = useState({});
+
+  useEffect(() => {
+    localStorage.setItem("taskList", JSON.stringify(taskList));
+  }, [taskList]);
 
   return (
     <div className="App">
