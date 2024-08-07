@@ -17,7 +17,7 @@ const AddTask = ({ taskList, setTaskList, task, setTask }) => {
     <section className="addTask">
       <form onSubmit={handleSubmit}>
         <input type="text" name="task" value={task.name || ""} autoComplete="off" placeholder="add task" maxLength="25" onChange={e => setTask({ ...task, name: e.target.value })} />
-        <button type="submit">{Boolean(task.name) ? "Upgrade" : "Add"}</button>
+        <button type="submit">{task.id ? "Upgrade" : "Add"}</button>
       </form>
     </section>
   );
